@@ -1,25 +1,3 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-name: registry-deployment
-labels:
-app: registry
-spec:
-strategy:
-type: Recreate
-replicas: 1
-selector:
-matchLabels:
-app: registry
-strategy:
-type: Recreate
-template:
-metadata:
-labels:
-app: registry
-tier: registry
-spec:
-
 kind: PersistentVolume
 apiVersion: v1
 metadata:
@@ -80,6 +58,29 @@ spec:
     app: registry
     tier: registry
   type: NodePort
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+name: registry-deployment
+labels:
+app: registry
+spec:
+strategy:
+type: Recreate
+replicas: 1
+selector:
+matchLabels:
+app: registry
+strategy:
+type: Recreate
+template:
+metadata:
+labels:
+app: registry
+tier: registry
+spec:
 ---
 
 apiVersion: extensions/v1beta1
