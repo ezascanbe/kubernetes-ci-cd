@@ -60,26 +60,7 @@ spec:
   type: NodePort
 ---
 
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-name: registry
-spec:
-strategy:
-type: Recreate
-selector:
-matchLabels:
-run: registry
-replicas: 1
-template:
-metadata:
-labels:
-run: registry
-spec:
----
-
-
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1 
 kind: Deployment
 metadata:
   name: registry
@@ -88,6 +69,10 @@ metadata:
 spec:
   strategy:
     type: Recreate
+  replicas: 1
+  selector:
+   matchLabels:
+    app: registry
   template:
     metadata:
       labels:
