@@ -63,25 +63,21 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-name: registry-deployment
-labels:
-app: registry
+name: registry
 spec:
 strategy:
 type: Recreate
-replicas: 1
 selector:
 matchLabels:
-app: registry
-strategy:
-type: Recreate
+run: registry
+replicas: 1
 template:
 metadata:
 labels:
-app: registry
-tier: registry
+run: registry
 spec:
 ---
+
 
 apiVersion: extensions/v1beta1
 kind: Deployment
